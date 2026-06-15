@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pengendalian Struktur</title>
+    </head>
+    <body>
+        <h2>Pengendalian Struktur</h2>
+        <script>
+        var gelar;
+        var pendidikan = "S2";
+        if (pendidikan === "S1") {
+            gelar = "Sarjana";
+        } else if (pendidikan === "S2") {
+            gelar = "Master";
+        } else if (pendidikan === "S3") {
+            gelar = "Doktor";
+        } else {
+            gelar = "Tidak Diketahui";
+        }
+        
+        document.write("Gelar: " + gelar + "<br><br>");
+
+        var count = 0;
+        while (count < 3) {
+            document.write("While ke-" + count + "<br>");
+            count++;
+        }
+
+        var i = 0;
+        do {
+            document.write("Do-while ke-" + i + "<br>");
+            i++;
+        } while (i < 3);
+
+        for (var j = 0; j < 5; j++) {
+            document.write("For ke-" + j + "<br>");
+        }
+        </script>
+    </body>
+</html>

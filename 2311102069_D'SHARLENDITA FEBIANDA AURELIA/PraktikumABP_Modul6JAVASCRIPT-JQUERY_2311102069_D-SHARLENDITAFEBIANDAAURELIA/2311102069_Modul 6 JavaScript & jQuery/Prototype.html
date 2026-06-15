@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <title>Prototype JavaScript</title>
+    </head>
+    <body>
+        <h2>Prototype pada JavaScript</h2>
+
+        <script>
+        var mobil = { 
+            nama: "Mobil",
+            jumlahBan: 4 
+        };
+
+        var truk = Object.create(mobil);
+
+        document.write("Nama truk: " + truk.nama + "<br>");
+        document.write("Jumlah ban truk: " + truk.jumlahBan + "<br>");
+        </script>
+    </body>
+</html>

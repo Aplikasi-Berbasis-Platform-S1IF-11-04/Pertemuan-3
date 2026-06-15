@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pemanggilan Fungsi</title>
+    </head>
+    <body>
+        <h2>Pemanggilan Fungsi JavaScript</h2>
+        <script>
+        var tambah = function (a, b) {
+            hasil = a + b;
+            return hasil;
+        };
+        
+        document.write("tambah(3,5): " + tambah(3,5) + "<br>");
+        
+        var simpan = tambah(3, 5);
+        document.write("simpan: " + simpan + "<br>");
+        document.write("tambah(simpan,2): " + tambah(simpan,2) + "<br>");
+        document.write("tambah(tambah(3,5),2): " + tambah(tambah(3,5),2) + "<br>");
+        document.write("tambah(tambah(2,3),4): " + tambah(tambah(2,3),4) + "<br><br>");
+
+        var naikkan = function (n) {
+            var hasil = n + 10;
+            return hasil;
+            hasil = hasil * 100;
+        };
+        
+        document.write("naikkan(10): " + naikkan(10) + "<br>");
+        document.write("naikkan(25): " + naikkan(25) + "<br><br>");
+        
+        var naikkan2 = function (n) {
+            return n + 10;
+        };
+
+        var tambah2 = function (a, b) {
+            return a + b;
+        };
+
+        document.write("tambah2(4,4): " + tambah2(4,4) + "<br>");
+        document.write("naikkan2(10): " + naikkan2(10) + "<br>");
+        document.write("tambah2(naikkan2(5),7): " + tambah2(naikkan2(5),7) + "<br>");
+        </script>
+    </body>
+</html>

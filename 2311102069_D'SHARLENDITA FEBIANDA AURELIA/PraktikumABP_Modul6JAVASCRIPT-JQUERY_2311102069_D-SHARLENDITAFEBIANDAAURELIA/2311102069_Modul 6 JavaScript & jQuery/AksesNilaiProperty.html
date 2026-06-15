@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <title>Akses Property</title>
+    </head>
+    <body>
+        <h2>Akses Nilai Property</h2>
+        <script>
+        var mobil = {
+            "warna-badan": "merah",
+            "nomor-polisi": "BK1234AB"
+        };
+
+        var jadwal = {
+            platform: 34
+        };
+        
+        document.write("mobil['warna-badan']: " + mobil["warna-badan"] + "<br>");
+        document.write("jadwal.platform: " + jadwal.platform + "<br><br>");
+
+        document.write("jadwal.nomor_kursi: " + jadwal.nomor_kursi + "<br>");
+        document.write("mobil['jumlah-roda']: " + mobil["jumlah-roda"] + "<br><br>");
+
+        mobil["jumlah-roda"] = 4;
+        mobil.bahan_bakar = "Bensin";
+
+        document.write("Jumlah roda: " + mobil["jumlah-roda"] + "<br>");
+        document.write("Bahan bakar: " + mobil.bahan_bakar + "<br>");
+        </script>
+    </body>
+</html>

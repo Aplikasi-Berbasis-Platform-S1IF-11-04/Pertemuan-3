@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pembuatan Fungsi</title>
+    </head>
+    <body>
+        <h2>Pembuatan Fungsi</h2>
+        <script>
+        function tambah(a, b) {
+            hasil = a + b;
+            return hasil;
+        }
+
+        var tambah2 = function (a, b) {
+            hasil = a + b;
+            return hasil;
+        };
+        
+        document.write("Hasil function declaration (3 + 5): " + tambah(3,5) + "<br>");
+        document.write("Hasil function expression (4 + 6): " + tambah2(4,6) + "<br>");
+        </script>
+    </body>
+</html>

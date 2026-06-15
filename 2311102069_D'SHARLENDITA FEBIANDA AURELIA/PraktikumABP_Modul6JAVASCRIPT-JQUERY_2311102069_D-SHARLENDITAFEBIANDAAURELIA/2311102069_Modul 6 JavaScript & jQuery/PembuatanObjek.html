@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pembuatan Object</title>
+    </head>
+    <body>
+        <h2>Pembuatan Object</h2>
+        <script>
+        var objek_kosong = {};
+
+        var mobil = {
+            "warna-badan": "merah",
+            "nomor-polisi": "BK1234AB"
+        };
+
+        document.write("Warna mobil: " + mobil["warna-badan"] + "<br>");
+        document.write("Nomor polisi: " + mobil["nomor-polisi"] + "<br><br>");
+
+        var jadwal = {
+            platform: 34,
+            telah_berangkat: false,
+            tujuan: "Medan",
+            asal: "Jakarta"
+        };
+
+        document.write("Tujuan: " + jadwal.tujuan + "<br>");
+        document.write("Asal: " + jadwal.asal + "<br><br>");
+
+        var jadwal2 = {
+            platform: 34,
+            telah_berangkat: false,
+            asal: {
+                kode_kota: "MDN",
+                nama_kota: "Medan",
+                waktu: "2013-12-29 14:00"
+            },
+            tujuan: {
+                kode_kota: "JKT",
+                nama_kota: "Jakarta",
+                waktu: "2013-12-29 17.30"
+            }
+        };
+
+        document.write("Kota asal: " + jadwal2.asal.nama_kota + "<br>");
+        document.write("Kota tujuan: " + jadwal2.tujuan.nama_kota + "<br>");
+        </script>
+    </body>
+</html>

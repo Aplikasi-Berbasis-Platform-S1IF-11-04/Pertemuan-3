@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ramadhan Mubarak</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+        body {
+            background: #f3f3f3;
+            font-family: 'Segoe UI', sans-serif;
+            color: #222;
+        }
+
+        .navbar {
+            background: white;
+        }
+
+        .hero {
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-weight: 700;
+        }
+
+        .hero p {
+            color: #777;
+            font-size: 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .text-section h4 {
+            font-weight: 700;
+        }
+
+        .text-section p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .img-container {
+            height: 280px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .img-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .thr {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .thr button {
+            border-radius: 30px;
+            padding: 10px 30px;
+        }
+
+        footer {
+            padding: 80px 0;
+            font-size: 14px;
+            color: #777;
+        }
+
+        footer b {
+            color: #333;
+        }
+
+        .divider {
+            width: 90%;
+            margin: 100px auto 60px auto;
+            border: none;
+            border-top: 2px solid #bfbfbf;
+        }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand fw-bold">Ramadhan</a>
+                <div class="ms-auto d-flex gap-4">
+                    <a class="nav-link">About</a>
+                    <a class="nav-link">Schedule</a>
+                    <a class="nav-link">Events</a>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="container">
+                <h1>Ramadhan Mubarak.</h1>
+                <p>A Month of Reflection.</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-section">
+                        <h4>Fasting (Sawm)</h4>
+                        <p>
+                            Fasting from dawn to sunset during
+                            Ramadhan, abstaining from food and drink.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="img-container">
+                            <img src="puasa.jpg" alt="Fasting">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="img-container">
+                            <img src="sholat.jpg" alt="Prayers">
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-section">
+                        <h4>Prayers (Salat)</h4>
+                        <p>
+                            Special Tarawih prayers and increased
+                            devotion throughout the holy month.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-section">
+                        <h4>Community Events</h4>
+                        <p>
+                            Iftar gatherings, charity drives,
+                            and togetherness in the community.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="img-container">
+                            <img src="iftar.jpg" alt="Community">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <hr class="divider">
+        <section class="thr">
+            <h4>Get THR</h4>
+            <p>Celebrate blessings and joy.</p>
+            <button class="btn btn-dark" onclick="showTHR()">
+                Get THR
+            </button>
+        </section>
+        
+        <div class="modal fade" id="thrModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-center p-4">
+                    <h3>Congrats!</h3>
+                    <p>You receive THR!</p>
+                    <button class="btn btn-dark" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="divider">
+        <footer>
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="footer-logo">
+                        <b>Ramadhan Kareem</b>
+                    </div>
+                    <div class="d-flex gap-5">
+                        <div>
+                            <b>Ramadhan</b><br>
+                            About<br>
+                            Fasting<br>
+                            Prayers
+                        </div>
+                        <div>
+                            <b>Community</b><br>
+                            Events<br>
+                            Charity<br>
+                            Contact
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+        function showTHR() {
+            let modal = new bootstrap.Modal(document.getElementById('thrModal'));
+            modal.show();
+        }
+        </script>
+    </body>
+</html>
