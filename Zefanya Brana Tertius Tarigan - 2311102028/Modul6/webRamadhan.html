@@ -1,0 +1,390 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramadan Kareem</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+
+background-image:url("ramadhan.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+overflow:hidden;
+color:white;
+text-align:center;
+position:relative;
+}
+
+/* overlay */
+
+body::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.45);
+z-index:0;
+}
+
+/* ===================== */
+/* LAMPU HIAS LEBARAN */
+/* ===================== */
+
+.lampu-container{
+position:absolute;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-around;
+z-index:2;
+}
+
+.lampu{
+width:15px;
+height:25px;
+border-radius:50%;
+background:red;
+margin:10px;
+animation:lampBlink 1s infinite alternate;
+}
+
+.lampu:nth-child(2){background:yellow}
+.lampu:nth-child(3){background:lime}
+.lampu:nth-child(4){background:cyan}
+.lampu:nth-child(5){background:pink}
+.lampu:nth-child(6){background:orange}
+.lampu:nth-child(7){background:violet}
+
+@keyframes lampBlink{
+from{opacity:0.3}
+to{opacity:1}
+}
+
+/* ===================== */
+/* BINTANG */
+/* ===================== */
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+animation:blink 2s infinite alternate;
+z-index:1;
+}
+
+@keyframes blink{
+from{opacity:0.2}
+to{opacity:1}
+}
+
+/* ===================== */
+/* CONTAINER */
+/* ===================== */
+
+.container{
+position:relative;
+z-index:3;
+
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(8px);
+
+padding:50px;
+border-radius:20px;
+
+box-shadow:0 0 40px rgba(0,0,0,0.5);
+animation:fadeIn 2s;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(30px)}
+to{opacity:1}
+}
+
+h1{
+font-size:45px;
+margin-bottom:10px;
+color:#ffd369;
+}
+
+p{
+opacity:0.9;
+margin-bottom:20px;
+}
+
+/* ===================== */
+/* BUTTON */
+/* ===================== */
+
+button{
+padding:15px 35px;
+border:none;
+border-radius:30px;
+font-size:18px;
+
+background:linear-gradient(45deg,#ffd369,#ff9f1c);
+color:#222;
+
+cursor:pointer;
+transition:0.3s;
+
+box-shadow:0 0 20px rgba(255,211,105,0.7);
+}
+
+button:hover{
+transform:scale(1.1);
+box-shadow:0 0 30px rgba(255,211,105,1);
+}
+
+/* ===================== */
+/* MODAL */
+/* ===================== */
+
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+visibility:hidden;
+opacity:0;
+
+transition:0.3s;
+z-index:10;
+}
+
+.modal.active{
+visibility:visible;
+opacity:1;
+}
+
+.modal-content{
+background:white;
+color:#333;
+padding:40px;
+border-radius:20px;
+text-align:center;
+animation:pop 0.4s;
+}
+
+@keyframes pop{
+from{transform:scale(0.6)}
+to{transform:scale(1)}
+}
+
+.modal-content h2{
+color:#28a745;
+margin-bottom:10px;
+}
+
+.close{
+margin-top:20px;
+padding:10px 20px;
+background:#ff6b6b;
+color:white;
+border:none;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* ===================== */
+/* KETUPAT GAME */
+/* ===================== */
+
+.ketupat{
+position:absolute;
+font-size:35px;
+cursor:pointer;
+z-index:4;
+animation:fall linear;
+}
+
+@keyframes fall{
+from{transform:translateY(-50px)}
+to{transform:translateY(110vh)}
+}
+
+/* SCORE */
+
+.score{
+position:absolute;
+top:60px;
+right:20px;
+font-size:20px;
+z-index:5;
+background:rgba(0,0,0,0.4);
+padding:10px 15px;
+border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LAMPU HIAS -->
+<div class="lampu-container">
+<div class="lampu"></div>
+<div class="lampu"></div>
+<div class="lampu"></div>
+<div class="lampu"></div>
+<div class="lampu"></div>
+<div class="lampu"></div>
+<div class="lampu"></div>
+</div>
+
+<div class="score">Ketupat: <span id="score">0</span></div>
+
+<div class="container">
+
+<h1>🌙 Ramadan Kareem</h1>
+<p>Klik tombol di bawah ini untuk mencoba keberuntungan THR kamu</p>
+
+<button onclick="showTHR()">Ambil THR</button>
+
+</div>
+
+<div class="modal" id="thrModal">
+
+<div class="modal-content">
+
+<h2>🎉 Selamat!</h2>
+<p>Anda mendapatkan THR Ramadan!</p>
+<p><b>Sebesar 1 MILIAR</b></p>
+
+<button class="close" onclick="closeModal()">Tutup</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* BINTANG */
+
+for(let i=0;i<80;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.top=Math.random()*100+"%";
+star.style.left=Math.random()*100+"%";
+star.style.animationDuration=(Math.random()*3+1)+"s";
+document.body.appendChild(star);
+}
+
+/* THR MODAL */
+
+function showTHR(){
+document.getElementById("thrModal").classList.add("active")
+confettiEffect()
+}
+
+function closeModal(){
+document.getElementById("thrModal").classList.remove("active")
+}
+
+/* CONFETTI */
+
+function confettiEffect(){
+
+for(let i=0;i<40;i++){
+
+let conf=document.createElement("div")
+
+conf.style.position="fixed"
+conf.style.width="8px"
+conf.style.height="8px"
+conf.style.background="hsl("+Math.random()*360+"deg,80%,60%)"
+conf.style.top="-10px"
+conf.style.left=Math.random()*100+"%"
+conf.style.opacity="0.8"
+conf.style.borderRadius="50%"
+conf.style.zIndex="999"
+
+document.body.appendChild(conf)
+
+let fall=Math.random()*3+2
+
+conf.animate([
+{transform:"translateY(0)"},
+{transform:"translateY(100vh)"}
+],{
+duration:fall*1000,
+easing:"linear"
+})
+
+setTimeout(()=>{
+conf.remove()
+},fall*1000)
+
+}
+
+}
+
+/* ===================== */
+/* GAME KETUPAT */
+/* ===================== */
+
+let score=0
+
+function spawnKetupat(){
+
+let k=document.createElement("div")
+k.className="ketupat"
+k.innerHTML="🧺"
+
+k.style.left=Math.random()*100+"%"
+let duration=Math.random()*3+3
+
+k.style.animationDuration=duration+"s"
+
+document.body.appendChild(k)
+
+k.onclick=function(){
+
+score++
+document.getElementById("score").innerText=score
+
+confettiEffect()
+
+k.remove()
+
+}
+
+setTimeout(()=>{
+k.remove()
+},duration*1000)
+
+}
+
+setInterval(spawnKetupat,1200)
+
+</script>
+
+</body>
+</html>
+```
