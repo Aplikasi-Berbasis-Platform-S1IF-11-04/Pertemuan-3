@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Ramadan · Rafiful Hana | THR Interactive</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700;900&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #03070c;
+    font-family: 'Space Mono', 'Inter', monospace;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.8rem;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(45deg, #1f4f1f33 0px, #1f4f1f33 2px, #0a1a0a33 2px, #0a1a0a33 14px),
+                repeating-linear-gradient(135deg, #e08e3a22 0px, #e08e3a22 1px, transparent 1px, transparent 18px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .brutal-noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjMDAwMDAwMDQiLz48cGF0aCBkPSJNMCAwaDQwdjQwSDB6IiBmaWxsPSIjZmZmZmZmMDMiLz48L3N2Zz4=');
+    background-repeat: repeat;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, #ffffff0c 1px, transparent 1px),
+                      linear-gradient(to bottom, #ffffff0c 1px, transparent 1px);
+    background-size: 42px 42px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .ramadan-container {
+    max-width: 1220px;
+    width: 100%;
+    position: relative;
+    z-index: 15;
+  }
+
+  .neuro-card {
+    background: #fffef5;
+    border: 5px solid #0a0a0a;
+    box-shadow: 20px 20px 0 #d45500;
+    transition: all 0.12s linear;
+  }
+
+  .neuro-card:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 14px 14px 0 #bf4600;
+  }
+
+  .ramadan-header {
+    background: #0b0b0b;
+    padding: 2rem 2.2rem;
+    border-bottom: 6px solid #f48c06;
+    position: relative;
+  }
+
+  .ramadan-header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -3px;
+    color: #ffffff;
+    line-height: 1.15;
+  }
+
+  .ramadan-header h1 span {
+    color: #f48c06;
+    border-left: 5px solid #f48c06;
+    padding-left: 1rem;
+    margin-left: 0.6rem;
+  }
+
+  .moon-icon {
+    font-size: 3rem;
+    color: #f48c06;
+    position: absolute;
+    bottom: -1.3rem;
+    right: 2rem;
+    background: #0b0b0b;
+    padding: 0.2rem 1rem;
+    border: 2px solid #f48c06;
+    transform: rotate(12deg);
+  }
+
+  .identity-row {
+    background: #262216;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #d45500;
+    gap: 1rem;
+  }
+
+  .identity-left {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .id-tag {
+    background: #000000;
+    padding: 0.3rem 1rem;
+    border-left: 4px solid #f48c06;
+    font-weight: 800;
+    color: #facc15;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  .id-tag span {
+    color: white;
+    margin-left: 0.6rem;
+    font-weight: 700;
+  }
+
+  .id-badge-univ {
+    background: #d45500;
+    padding: 0.3rem 1.2rem;
+    font-weight: 800;
+    color: #000;
+    font-size: 0.8rem;
+  }
+
+  .ramadan-bless {
+    background: #fff3df;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-bottom: 3px solid #0a0a0a;
+  }
+
+  .ramadan-bless p {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    color: #2c4724;
+  }
+
+  .ramadan-bless small {
+    font-family: monospace;
+    display: block;
+    margin-top: 0.5rem;
+    color: #b95915;
+    font-weight: 600;
+  }
+
+  .main-content {
+    padding: 2rem 2rem;
+    background: #fef9ef;
+  }
+
+  .virtue-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .virtue-card {
+    background: #ffffff;
+    border: 3px solid #000000;
+    box-shadow: 8px 8px 0 #2f6b2f;
+    padding: 1.4rem;
+    flex: 1;
+    min-width: 170px;
+    text-align: center;
+    transition: 0.1s linear;
+  }
+
+  .virtue-card i {
+    font-size: 2.5rem;
+    color: #d45500;
+    margin-bottom: 0.8rem;
+  }
+
+  .virtue-card h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+  }
+
+  .thr-section {
+    text-align: center;
+    margin: 2rem 0 1.2rem;
+  }
+
+  .btn-thr {
+    background: #0a0a0a;
+    border: 3px solid #0a0a0a;
+    padding: 1rem 2.8rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: 900;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #f48c06;
+    cursor: pointer;
+    transition: 0.1s linear;
+    box-shadow: 10px 10px 0 #d45500;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .btn-thr:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 5px 5px 0 #d45500;
+    background: #1e1e1e;
+    color: #ffb347;
+  }
+
+  .footer-identity {
+    background: #12100c;
+    padding: 0.9rem;
+    text-align: center;
+    border-top: 4px solid #f48c06;
+    margin-top: 1rem;
+    color: #facc15;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.8rem;
+  }
+
+  .modal-neuro {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.92);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-neuro-content {
+    background: #fff7e8;
+    border: 5px solid #000000;
+    box-shadow: 24px 24px 0 #d45500;
+    max-width: 500px;
+    width: 90%;
+    padding: 2rem 2rem 2rem;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .modal-neuro-content i {
+    font-size: 3.5rem;
+    color: #d45500;
+    margin-bottom: 0.8rem;
+  }
+
+  .modal-neuro-content h2 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 0.8rem;
+  }
+
+  .modal-greeting {
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: #0a0a0a;
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    color: #facc15;
+    margin: 0.8rem 0;
+  }
+
+  .close-modal-neuro {
+    background: #0a0a0a;
+    border: none;
+    color: white;
+    font-weight: 800;
+    padding: 0.75rem 2rem;
+    margin-top: 1.2rem;
+    font-family: monospace;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.1s;
+    border: 2px solid #000;
+  }
+
+  .close-modal-neuro:hover {
+    background: #d45500;
+    color: #000;
+    transform: scale(0.96);
+  }
+
+  @media (max-width: 700px) {
+    body {
+      padding: 1rem;
+    }
+    .ramadan-header h1 {
+      font-size: 1.9rem;
+    }
+    .ramadan-bless p {
+      font-size: 1rem;
+    }
+    .btn-thr {
+      font-size: 0.9rem;
+      padding: 0.75rem 1.5rem;
+    }
+    .identity-left {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .footer-identity {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="brutal-noise"></div>
+<div class="grid-overlay"></div>
+<div class="ramadan-container">
+  <div class="neuro-card">
+    <div class="ramadan-header">
+      <h1>RAMADAN <span>1447 H</span>· BERKAH</h1>
+      <div class="moon-icon"><i class="fas fa-star-and-crescent"></i></div>
+    </div>
+
+    <div class="identity-row">
+      <div class="identity-left">
+        <div class="id-tag"><i class="fas fa-user"></i> NAMA <span>Muhammad Rafiful Hana</span></div>
+        <div class="id-tag"><i class="fas fa-id-card"></i> NIM <span>2311102227</span></div>
+        <div class="id-tag"><i class="fas fa-university"></i> FAKULTAS <span>Teknik Informatika</span></div>
+      </div>
+      <div class="id-badge-univ"><i class="fas fa-graduation-cap"></i> TELKOM UNIVERSITY · TUGAS RAMADAN</div>
+    </div>
+
+    <div class="ramadan-bless">
+      <p>MARHABAN YA RAMADAN · BULAN PENUH AMPUNAN</p>
+      <small>estetika brutal, hati yang lentur | semangat berbagi & kemenangan</small>
+    </div>
+
+    <div class="main-content">
+      <div class="virtue-grid">
+        <div class="virtue-card">
+          <i class="fas fa-hands-praying"></i>
+          <h3>TAHAJJUD</h3>
+          <p>qiyamul lail & itikaf</p>
+        </div>
+        <div class="virtue-card">
+          <i class="fas fa-hand-holding-usd"></i>
+          <h3>SEDEKAH</h3>
+          <p>berbagi THR & rezeki</p>
+        </div>
+        <div class="virtue-card">
+          <i class="fas fa-quran"></i>
+          <h3>TADARUS</h3>
+          <p>khatam al-quran</p>
+        </div>
+      </div>
+
+      <div class="thr-section">
+        <button id="thrModalTrigger" class="btn-thr">
+          <i class="fas fa-gift"></i> BUKA THR<i class="fas fa-angle-double-right"></i>
+        </button>
+        <div id="toastNotification" style="margin-top: 1rem; min-height: 32px;"></div>
+      </div>
+
+      <div style="background: #e9e2cf; padding: 0.8rem; text-align: center; border-left: 6px solid #d45500; margin-top: 0.5rem;">
+        <i class="fas fa-calendar-week"></i> 1 Ramadhan 1447 H · 20 Maret 2026 | Momentum THR & keberkahan hakiki
+      </div>
+    </div>
+
+    <div class="footer-identity">
+      <span><i class="fas fa-moon"></i> Muhammad Rafiful Hana (2311102227)</span>
+      <span><i class="fas fa-location-dot"></i> Teknik Informatika · Telkom University</span>
+      <span><i class="fas fa-tag"></i> Tugas Ramadan · THR Modal</span>
+    </div>
+  </div>
+</div>
+
+<div id="thrSpecialModal" class="modal-neuro">
+  <div class="modal-neuro-content">
+    <i class="fas fa-envelope-open-text"></i>
+    <h2>THR <span style="color:#d45500;"></span></h2>
+    <div class="modal-greeting">Selamat anda mendapatkan THR</div>
+    <div style="font-size: 2rem; margin: 0.8rem 0;">💰✨📿</div>
+    <div style="font-weight: bold; border-top: 2px dashed #000; padding-top: 12px; margin-top: 6px;">Muhammad Rafiful Hana · 2311102227<br>Teknik Informatika · Tel-U</div>
+    <div style="margin: 6px 0 0; font-size:0.7rem;">Taqabbalallahu minna wa minkum</div>
+    <button class="close-modal-neuro" id="closeModalNeuro">TUTUP MODAL</button>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    const modal = $('#thrSpecialModal');
+    const triggerBtn = $('#thrModalTrigger');
+    const closeBtn = $('#closeModalNeuro');
+    const toastArea = $('#toastNotification');
+
+    function openNeuroModal() {
+      modal.css('display', 'flex').hide().fadeIn(160);
+      toastArea.html('<span style="background:#0a0a0a; color:#f48c06; padding:6px 16px; border-left:5px solid #d45500; font-weight:bold; font-size:0.8rem;"><i class="fas fa-check-circle"></i> THR claim berhasil · Modal brutal aktif</span>');
+      setTimeout(function() {
+        toastArea.fadeOut(700, function() {
+          $(this).html('').show();
+        });
+      }, 1700);
+    }
+
+    function closeNeuroModal() {
+      modal.fadeOut(140);
+    }
+
+    triggerBtn.on('click', function(e) {
+      e.preventDefault();
+      openNeuroModal();
+    });
+
+    closeBtn.on('click', function() {
+      closeNeuroModal();
+    });
+
+    $(window).on('click', function(event) {
+      if ($(event.target).is(modal)) {
+        closeNeuroModal();
+      }
+    });
+
+    $(document).on('keydown', function(e) {
+      if (e.key === 'Escape' && modal.is(':visible')) {
+        closeNeuroModal();
+      }
+    });
+  });
+</script>
+</body>
+</html>
